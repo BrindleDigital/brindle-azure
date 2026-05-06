@@ -1,0 +1,50 @@
+/*
+ Theme Name:   Brindle Azure
+ Theme URI:    http://childtheme-generator.com/
+ Description:  Brindle Azure Corporate Theme
+ Author:       Brindle Digital
+ Author URI:   https://brindledigital.com/
+ GitHub Theme URI: https://github.com/BrindleDigital/brindle-azure
+ GitHub Branch:    master
+ Version:      1.0
+ Template:       generatepress
+ Date:            06-05-2026
+ Requires at least: 5.0
+ Tested up to: 5.7
+ Requires PHP: 7.0
+ License: GPL-2.0-or-later
+ License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:     brindle-azure
+*/
+
+
+
+
+/* ==========================================================================
+   General
+   ========================================================================== */
+:root{
+	--header-height:85px;
+	--scrol-header-height:;
+	--pd-left: calc((100vw - var(--gb-container-width)) / 2);
+    --pd-right: calc((100vw - var(--gb-container-width)) / 2);
+	 --wp-adminbar:32px;
+}
+html{
+    --rentfetch-font-size-smallest: 13px;
+    --rentfetch-font-size-small: 13px;
+    --rentfetch-font-size-medium: 12px;
+    --rentfetch-font-size-large: 18px;
+    --rentfetch-font-size-larger: 25px;
+}
+a{
+	color:inherit;
+}
+h1, h2, h3, h4, h5, h6{
+word-break: initial;
+  word-wrap: initial;}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
