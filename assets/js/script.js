@@ -1,14 +1,43 @@
+/*Back To Top Script*/
+jQuery(document).ready(function () {
 
-jQuery(document).ready(function() {
-  jQuery('.site-header').scrollToFixed();
-});
+  jQuery('.back-to-top').click(function (e) {
+    e.preventDefault();
 
-jQuery(document).ready(function(){
-  jQuery('.top-bar-close').click(function(){
-      jQuery(this).toggleClass('hide');
-      jQuery('.top-bar').toggleClass('hide');
+    jQuery('html, body').animate({
+      scrollTop: 0
+    }, 600); // 600ms smooth scroll
   });
+
 });
+
+//---------------Headroom---------------------//
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  // Mobile detection that works in real mobile browsers
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  // Much smaller offset for mobile
+  const offsetValue = isMobile ? 10 : 100;  
+
+  const headroom = new Headroom(header, {
+    tolerance: 5,
+    offset: offsetValue,
+    classes: {
+      initial: "animated",
+      unpinned: "slideDown",
+      top: "headroom--top",
+      notTop: "headroom--not-top",
+    }
+  });
+
+  headroom.init();
+});
+
 
 //---------Menu Toggle-----------//
 
