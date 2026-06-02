@@ -1,3 +1,3 @@
 # brindle-azure
 Azure Corporate
-~Current Version:1.0~
+~Current Version:1.1~
