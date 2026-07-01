@@ -7,7 +7,7 @@
  */
 
 // define a constant for the child theme version
-define( 'CHILD_THEME_VERSION', '1.1' );
+define( 'CHILD_THEME_VERSION', '1.2' );
 
 /*
 * Add custom css
@@ -78,12 +78,20 @@ function show_menu_list($attr){
     return $output;
 }
 
+function available_team_function(){
+  ob_start();
+  include_once get_stylesheet_directory() . "/cpt/show_team.php";
+  $content = ob_get_clean();
+  return $content;
+}
 
+include_once get_stylesheet_directory() . "/cpt/team.php";
 function register_shortcodes()
 {
   add_shortcode("brindle-breadcrumb", "available_show_breadcrumb_function");
   add_shortcode("show-menu", "show_menu_list");  
   add_shortcode("current-year", "get_current_year_shortcode");
+  add_shortcode("show-team", "available_team_function");
 }
 add_action("init", "register_shortcodes");
 
