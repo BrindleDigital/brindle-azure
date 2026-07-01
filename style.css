@@ -6,9 +6,9 @@
  Author URI:   https://brindledigital.com/
  GitHub Theme URI: https://github.com/BrindleDigital/brindle-azure
  GitHub Branch:    master
- Version:      1.1
+ Version:      1.2
  Template:       generatepress
- Date:            02-06-2026
+ Date:            01-07-2026
  Requires at least: 5.0
  Tested up to: 5.7
  Requires PHP: 7.0
@@ -259,7 +259,9 @@ header.headroom--not-top .line{
 .site-content{
 	overflow:hidden;
 }
-
+body.property-page-template .site-content {
+  overflow: unset;
+}
 .grid-container.container {
   padding-bottom: 0;
   padding-top: 0;
@@ -708,16 +710,47 @@ body.single-floorplans .single-floorplans-container-outer {
 .properties-loop .property-details{
 	text-align: left;
 }
+/*Rent fetch button*/
+body a.rentfetch-button {
+	background-color: var(--primary-color);
+	color: var(--light-color);
+	padding: 20px 25px !important;
+    border-radius: 50px !important;
+    border: solid 1px var(--primary-color);
+    transition: all .3s ease-in-out;
+    min-width: 156px !important;
+    white-space: nowrap;
+	font-family: var(--gp-font--avenir);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+	text-align:center;
+}
+body a.rentfetch-button:hover{
+	background-color: var(--secondary-color);
+    color: var(--light-color);
+    border-color: var(--secondary-color);
+}
 /*About Page*/
+.team-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 120px 120px; /* first value = row (vertical), second = column (horizontal) */        
+}
+.team-grid-container figure {
+  position: relative;
+}
+.team-grid-container figure a {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
 .team-image-outer {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 24px;
-}
-.team-image-outer .gb-block-image {
-    height: 100%;
-    margin: 0;
 }
 .team-image-outer img {
     width: 100%;
@@ -725,6 +758,151 @@ body.single-floorplans .single-floorplans-container-outer {
     object-fit: cover;
     display: block;
 }
+.team-img {
+    border-radius: 24px;
+}
+.team-info {
+    padding-left: 25px;
+    padding-top: 40px;
+}
+.team-info-title {
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    text-align: left;
+}
+.team-info-position {
+    text-transform: uppercase;
+    text-align: left;
+}
+.team-info-details{
+    text-align: left;
+}
+@media (max-width: 767px) {
+  .team-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 50px;
+  }
+  .team-info {    
+      padding-top: 0px;
+      padding-left: 0px;
+  }
+  .team-image-outer {
+      height: 290px;
+  }
+}
+@media (max-width: 576px) {
+    .team-grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/*Popup*/
+.btn-close {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.63086 1.50775L9.02765 9.76164' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M1.63086 9.76166L9.02765 1.50777' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 8px;
+    width: 25px;
+    height: 25px;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+.modal-dialog {
+    width: 100%;
+    max-width: 872px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 1px 2px 30px 0px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.modal-dialog .btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9;
+    cursor: pointer;
+}
+.modal-dialog .btn-close:hover {
+    background-color:transparent !important;
+}
+.modal-dialog figure {
+    flex-shrink: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 405px;
+}
+.modal-dialog figure img {
+    border-radius: 5px;
+}
+.modal-dialog article h4 {
+    /* color: #000;*/
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    margin-bottom: 5px;
+}
+.modal-dialog article .sub-heading {
+    /*color: #000;*/
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 120.5%;
+    letter-spacing: 0.4px;
+    margin-bottom: 32px;
+}
+.modal-dialog article p:last-of-type {
+    margin-bottom: 0;
+}
+@media (max-width: 767px) {
+    .modal {
+        overflow-y: auto;
+        z-index:99999;
+        align-items: flex-start;
+    }
+    .modal-dialog {
+        flex-direction: column;
+        justify-content: flex-start;  /* 🔑 instead of center */
+        gap: 30px;
+        max-height: calc(100vh - 32px); /* leaves space for padding */
+        overflow-y: auto;
+    }
+    .modal-dialog figure{
+        max-width: 100%;
+    }
+    .modal-dialog figure img {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;          /* prevents it from dominating mobile */
+        object-fit: contain;      /* KEY: prevents cropping */
+        display: block;
+    }
+    .team-grid-container figure img {
+        height: auto;
+        object-fit: contain;
+    }
+}
+
 /*About End*/
 /*Stack Card Start*/
 body.service-page-template-main .site-content {

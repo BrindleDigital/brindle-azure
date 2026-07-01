@@ -198,4 +198,23 @@ jQuery(document).ready(function($) {
   });
 
 });
-	
+
+jQuery(document).ready(function () {
+ // jQuery(".modal").fadeOut();
+  jQuery(".btn-popup").click(function () {
+    event.preventDefault();
+    var target = jQuery(this).data("target");
+    jQuery("#" + target).fadeIn(300);
+  });
+
+  jQuery(".modal").click(function (e) {
+    // Close the modal when clicking outside of the modal content
+    if (e.target === this) {
+      jQuery(this).fadeOut(300);
+    }
+  });
+  jQuery(".btn-close").click(function (event) {
+    event.stopPropagation(); // Prevent the click event from propagating to the modal
+    jQuery(this).closest(".modal").fadeOut(300); // Close the modal
+  });
+});
